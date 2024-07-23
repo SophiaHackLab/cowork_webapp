@@ -1,40 +1,37 @@
 <script setup lang="ts">
-const head = useLocaleHead({
-  addDirAttribute: true,
-  identifierAttribute: 'id',
-  addSeoAttributes: true
-})
+const head = {
+    title: 'SHL // Cowork booking panel',
+    meta: [
+        {
+            id: 'meta-charset',
+            charset: 'utf-8',
+        },
+        {
+            id: 'meta-viewport',
+            name: 'viewport',
+            content: 'width=device-width, initial-scale=1',
+        },
+    ],
+    link: [],
+}
+
+
+
+useHead(head);
+
 </script>
 
 <template>
-  <div class="app">
-    <Html
-      :lang="head.htmlAttrs!.lang"
-      :dir="head.htmlAttrs!.dir"
-    >
-      <Head>
-        <Title>Nuxt 3 Boilerplate</Title>
-        <Link
-          v-for="link in head.link"
-          :id="link.id"
-          :key="link.id"
-          :rel="link.rel"
-          :href="link.href"
-          :hreflang="link.hreflang"
-        />
-        <Meta
-          v-for="meta in head.meta"
-          :id="meta.id"
-          :key="meta.id"
-          :property="meta.property"
-          :content="meta.content"
-        />
-      </Head>
-      <Body>
-        <NuxtLayout>
-          <NuxtPage />
-        </NuxtLayout>
-      </Body>
-    </Html>
-  </div>
+    <div class="app">
+        <Html lang="fr">
+
+        <Body class="h-full w-full">
+            <NuxtLoadingIndicator color="white" />
+            <NuxtLayout>
+                <NuxtPage />
+            </NuxtLayout>
+        </Body>
+
+        </Html>
+    </div>
 </template>

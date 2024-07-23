@@ -5,12 +5,17 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: true
   },
+  ssr: false,
+  devServer: {
+    host: '0.0.0.0',
+    port: 3001
+  },
   imports: {
     // Auto-import pinia stores defined in `~/stores`
     dirs: ['stores']
   },
   modules: [// Installed modules
-    '@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/i18n', '@nuxtjs/tailwindcss', '@nuxt/image'],
+    '@vueuse/nuxt', '@pinia/nuxt', '@nuxtjs/i18n', '@nuxtjs/tailwindcss', '@nuxt/image', "shadcn-nuxt"],
   pinia: {
     autoImports: [
       'defineStore',
@@ -38,5 +43,16 @@ export default defineNuxtConfig({
       }
     ],
     defaultLocale: 'en'
+  },
+  shadcn: {
+    /**
+     * Prefix for all the imported component
+     */
+    prefix: '',
+    /**
+     * Directory that the component lives in.
+     * @default "./components/ui"
+     */
+    componentDir: './src/components/ui'
   }
 })
