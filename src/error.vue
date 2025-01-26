@@ -2,15 +2,15 @@
 const error = useError()
 
 const errorCode = computed(() => (
-  error.value instanceof Error || !error.value
+  error.value instanceof Error
     ? 500
-    : error.value.statusCode
+    : (error.value as any)?.statusCode || 500
 ))
 
 const errorMessage = computed(() => (
-  error.value instanceof Error || !error.value
+  error.value instanceof Error
     ? 'Something went wrong'
-    : error.value.statusMessage
+    : (error.value as any)?.statusMessage || 'Something went wrong'
 ))
 
 const handleError = () => {
